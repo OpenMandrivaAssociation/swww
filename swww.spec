@@ -19,11 +19,12 @@ BuildRequires: git
 
 %prep
 %autosetup -p1
-cargo vendor
-%cargo_prep -v vendor
+#cargo vendor
+#%cargo_prep -v vendor
 
 %build
-cargo build --locked --profile rpm
+#cargo build --locked --profile rpm
+cargo build --release
 ./doc/gen.sh
 
 %install
