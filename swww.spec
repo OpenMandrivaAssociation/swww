@@ -8,6 +8,7 @@ Source0:	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Summary:	A Solution to your Wayland Wallpaper Woes
 License:	GPL-3.0
 Group:		Wayland/Utils
+
 BuildSystem: cargo
 BuildRequires: cargo-rpm-macros >= 24
 BuildRequires: scdoc
