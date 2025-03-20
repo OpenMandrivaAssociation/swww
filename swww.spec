@@ -24,7 +24,7 @@ BuildRequires: git
 
 %build
 #cargo build --locked --profile rpm
-cargo build --offline
+cargo build --release
 ./doc/gen.sh
 
 %install
