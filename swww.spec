@@ -11,6 +11,7 @@ Group:		Wayland/Utils
 BuildRequires:	cargo
 BuildRequires: scdoc
 BuildRequires: pkgconfig(liblz4)
+BuildRequires: git
 
 
 %description
