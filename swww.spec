@@ -22,7 +22,7 @@ BuildRequires: git
 %autosetup -p1
 #cargo vendor
 #%cargo_prep -v vendor
-
+cargo fetch
 %build
 %cargo_build
 ./doc/gen.sh
