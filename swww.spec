@@ -24,9 +24,11 @@ BuildRequires: git
 #%cargo_prep -v vendor
 
 %build
-#cargo build --locked --profile rpm
-cargo build --release
+%cargo_build
 ./doc/gen.sh
+
+%check
+%cargo_test --locked
 
 %install
 install -Dpm755 target/release/swww %{buildroot}%{_bindir}/swww
