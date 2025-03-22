@@ -8,27 +8,27 @@ Version:	0.9.5
 Release:	1
 URL:		https://github.com/LGFae/swww
 Source0:	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:    swww-0.9.5-vendor.tar.gz
-Source2:    bitcode-5f25a59.tar.gz
+Source1:    swww-cargo-vendor-0.9.5.tar.xz
+Source2:    cargo_config
+Source100:  pack-cargo-vendor.sh
 Summary:	A Solution to your Wayland Wallpaper Woes
 License:	GPL-3.0
-Group:		Wayland/Wallpaper
+Group:		Wayland/Utils
 
 BuildRequires:	cargo
 BuildRequires: scdoc
 BuildRequires: pkgconfig(liblz4)
-BuildRequires: git
 
 %description
 %summary
 
 %prep
-%autosetup -p1
-tar -xzf %{SOURCE1}
-tar -xzf %{SOURCE2}
+%autosetup -n %{name}-%{version} -a1
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
-cargo build --release --locked --offline
+cargo build --release --verbose
 ./doc/gen.sh
 
 %install
