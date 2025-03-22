@@ -9,7 +9,7 @@ Release:	1
 URL:		https://github.com/LGFae/swww
 Source0:	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:    swww-0.9.5-vendor.tar.gz
-Source2:    https://github.com/SoftbearStudios/bitcode/archive/%{bitcode_commit}/bitcode-%{bitcode_shortcommit}.tar.gz
+Source2:    bitcode-5f25a59.tar.gz
 Summary:	A Solution to your Wayland Wallpaper Woes
 License:	GPL-3.0
 Group:		Wayland/Wallpaper
