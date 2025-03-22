@@ -1,34 +1,35 @@
 %global debug_package %{nil}
 
+%global bitcode_commit 5f25a59be3e66deef721e7eb2369deb1aa32d263
+%global bitcode_shortcommit %(c=%{bitcode_commit}; echo ${c:0:7})
+
 Name:		swww
 Version:	0.9.5
 Release:	1
 URL:		https://github.com/LGFae/swww
 Source0:	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:    swww-0.9.5-vendor.tar.gz
+Source2:    https://github.com/SoftbearStudios/bitcode/archive/%{bitcode_commit}/bitcode-%{bitcode_shortcommit}.tar.gz
 Summary:	A Solution to your Wayland Wallpaper Woes
 License:	GPL-3.0
-Group:		Wayland/Utils
+Group:		Wayland/Wallpaper
 
-BuildRequires: cargo-rpm-macros >= 24
+BuildRequires:	cargo
 BuildRequires: scdoc
 BuildRequires: pkgconfig(liblz4)
 BuildRequires: git
-
 
 %description
 %summary
 
 %prep
 %autosetup -p1
-#cargo vendor
-#%cargo_prep -v vendor
-cargo fetch
-%build
-%cargo_build
-./doc/gen.sh
+tar -xzf %{SOURCE1}
+tar -xzf %{SOURCE2}
 
-%check
-%cargo_test --locked
+%build
+cargo build --release --locked --offline
+./doc/gen.sh
 
 %install
 install -Dpm755 target/release/swww %{buildroot}%{_bindir}/swww
