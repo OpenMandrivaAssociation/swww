@@ -1,8 +1,5 @@
 %global debug_package %{nil}
 
-%global bitcode_commit 5f25a59be3e66deef721e7eb2369deb1aa32d263
-%global bitcode_shortcommit %(c=%{bitcode_commit}; echo ${c:0:7})
-
 Name:		swww
 Version:	0.9.5
 Release:	1
