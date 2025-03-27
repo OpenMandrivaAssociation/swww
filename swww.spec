@@ -20,8 +20,20 @@ BuildRequires: pkgconfig(liblz4)
 
 %prep
 %autosetup -n %{name}-%{version} -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+mkdir -p .cargo
+cat >> .cargo/config.toml << EOF
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/SoftbearStudios/bitcode.git?rev=5f25a59"]
+git = "https://github.com/SoftbearStudios/bitcode.git"
+rev = "5f25a59"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+
+EOF
 
 %build
 cargo build --release --verbose
