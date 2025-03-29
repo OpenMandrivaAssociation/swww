@@ -6,7 +6,6 @@ Release:	1
 URL:		https://github.com/LGFae/swww
 Source0:	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:    swww-cargo-vendor-0.9.5.tar.xz
-Source2:    cargo_config
 Summary:	A Solution to your Wayland Wallpaper Woes
 License:	GPL-3.0
 Group:		Wayland/Utils
