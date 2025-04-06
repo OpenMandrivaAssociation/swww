@@ -19,6 +19,7 @@ BuildRequires: pkgconfig(liblz4)
 
 %prep
 %autosetup -n %{name}-%{version} -a1
+tar -zxf %{SOURCE1}
 mkdir -p .cargo
 cat >> .cargo/config.toml << EOF
 [source.crates-io]
