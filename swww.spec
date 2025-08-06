@@ -1,11 +1,11 @@
 %global debug_package %{nil}
 
 Name:		swww
-Version:	0.9.5
+Version:	0.10.3
 Release:	1
 URL:		https://github.com/LGFae/swww
 Source0:	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:    swww-cargo-vendor-0.9.5.tar.xz
+Source1:    	swww-%{version}-vendor.tar.gz
 Summary:	A Solution to your Wayland Wallpaper Woes
 License:	GPL-3.0
 Group:		Wayland/Utils
@@ -13,6 +13,7 @@ Group:		Wayland/Utils
 BuildRequires:	cargo
 BuildRequires: scdoc
 BuildRequires: pkgconfig(liblz4)
+BuildRequires: pkgconfig(wayland-protocols)
 
 %description
 %summary
@@ -25,18 +26,12 @@ cat >> .cargo/config.toml << EOF
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/SoftbearStudios/bitcode.git?rev=5f25a59"]
-git = "https://github.com/SoftbearStudios/bitcode.git"
-rev = "5f25a59"
-replace-with = "vendored-sources"
-
 [source.vendored-sources]
 directory = "vendor"
-
 EOF
 
 %build
-cargo build --release --verbose
+cargo build --release --offline --frozen
 ./doc/gen.sh
 
 %install
