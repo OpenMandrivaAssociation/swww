@@ -14,7 +14,7 @@ BuildRequires:	cargo
 BuildRequires: scdoc
 BuildRequires: pkgconfig(liblz4)
 BuildRequires: pkgconfig(wayland-protocols)
-BuildRequires: pkgconfig(wayland)
+BuildRequires: pkgconfig(wayland-client)
 
 %description
 %summary
