@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:		swww
-Version:	0.10.3
+Version:	0.11.0
 Release:	1
 URL:		https://github.com/LGFae/swww
 Source0:	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
