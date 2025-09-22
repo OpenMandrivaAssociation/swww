@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:		swww
-Version:	0.11.0
+Version:	0.11.2
 Release:	1
 URL:		https://github.com/LGFae/swww
 Source0:	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ BuildRequires: scdoc
 BuildRequires: pkgconfig(liblz4)
 BuildRequires: pkgconfig(wayland-protocols)
 BuildRequires: pkgconfig(wayland-client)
+BuildRequires: pkgconfig(dav1d)
 
 %description
 %summary
@@ -32,7 +33,7 @@ directory = "vendor"
 EOF
 
 %build
-cargo build --release --offline --frozen
+cargo build --release --offline --frozen --all-features
 ./doc/gen.sh
 
 %install
